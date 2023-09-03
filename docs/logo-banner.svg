@@ -25,14 +25,14 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.81658622"
-     inkscape:cx="508.82564"
+     inkscape:cx="510.05024"
      inkscape:cy="216.75605"
      inkscape:window-width="1916"
      inkscape:window-height="1046"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer5" /><defs
+     inkscape:current-layer="layer1" /><defs
      id="defs1"><inkscape:path-effect
        effect="perspective-envelope"
        up_left_point="16.333704,3.7689715"
@@ -820,7 +820,7 @@
        id="g11"
        inkscape:label="triangle-right"
        style="display:inline"
-       transform="translate(204.46262,5.153973)"><path
+       transform="matrix(-1,0,0,1,303.57794,5.153973)"><path
          style="color:#000000;display:inline;fill:none;fill-opacity:1;stroke:url(#linearGradient19);stroke-width:1.538;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
          d="m 16.7582,61.560033 c 0.566119,0.994742 1.612171,1.606465 2.744167,1.604823 l 30.085196,-0.0453 30.041059,-0.0448 c 2.431271,-0.0041 3.950586,-2.683003 2.735467,-4.822982 L 67.351622,31.82403 52.32772,5.3761483 C 51.109904,3.2332158 48.066173,3.2331927 46.848114,5.376398 L 31.808677,31.850021 16.758215,58.342118 c -0.566011,0.996443 -0.566018,2.223083 -1.5e-5,3.217915 z"
          id="path3"
@@ -885,7 +885,7 @@
          inkscape:label="inner"><tspan
            x="-24.866856"
            y="124.356"
-           id="tspan1">BURNS!</tspan></text></g><g
+           id="tspan4">BURNS!</tspan></text></g><g
        id="text21-2"
        transform="matrix(1.9927714,0,0,1.9927697,55.589428,-170.8126)"
        style="display:inline;stroke:#000000;stroke-width:1.00015;stroke-dasharray:none;stroke-opacity:1"
@@ -902,6 +902,6 @@
          inkscape:label="inner"><tspan
            x="-17.312851"
            y="124.356"
-           id="tspan3"><tspan
+           id="tspan6"><tspan
              style="-inkscape-font-specification:sans-serif"
-             id="tspan2">LAVA</tspan></tspan></text></g></g></svg>
+             id="tspan5">LAVA</tspan></tspan></text></g></g></svg>
