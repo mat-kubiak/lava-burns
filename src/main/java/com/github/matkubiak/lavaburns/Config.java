@@ -17,12 +17,21 @@ public class Config {
             .comment(" Whether being in water will protect the player from burning")
             .define("waterProtection", false);
 
+    private static ForgeConfigSpec.ConfigValue<Integer>
+        BURN_DURATION_SPEC =  BUILDER
+            .comment(" For how many seconds to set the player on fire")
+            .define("burnDuration", 1);
+
     private static boolean bucketBurns, waterProtection;
+    private static int burnDuration;
     public static boolean getBucketBurns() {
         return bucketBurns;
     }
     public static boolean getWaterProtection() {
         return waterProtection;
+    }
+    public static int getBurnDuration() {
+        return burnDuration;
     }
 
     public static ForgeConfigSpec SPEC = BUILDER.build();
@@ -31,5 +40,6 @@ public class Config {
     static void onLoad(final ModConfigEvent event) {
         bucketBurns = BUCKET_BURNS.get();
         waterProtection = WATER_PROTECTION_SPEC.get();
+        burnDuration = BURN_DURATION_SPEC.get();
     }
 }

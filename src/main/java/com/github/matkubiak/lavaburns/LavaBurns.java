@@ -74,7 +74,7 @@ public class LavaBurns {
     }
 
     private void burnPlayer(Player player) {
-        player.setSecondsOnFire(1);
+        player.setSecondsOnFire(Config.getBurnDuration());
         if (player.isInWater() && !Config.getWaterProtection())
             player.hurt(player.level().damageSources().onFire(), 1);
     }

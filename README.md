@@ -37,5 +37,7 @@ Here is the default config:
 # Whether holding a bucket of lava will burn the player
 bucketBurns = true
 # Whether being in water will protect the player from burning
-waterProtection = true
+waterProtection = false
+# For how many seconds to set the player on fire
+burnDuration = 10
 ```
