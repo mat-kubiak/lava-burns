@@ -25,7 +25,8 @@ displayName="${mod_name}" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/mat-kubiak/lava-burns" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="lava_burns.png" #optional
+logoFile="lava_burns.png" #optional
+logoBlur=true
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
