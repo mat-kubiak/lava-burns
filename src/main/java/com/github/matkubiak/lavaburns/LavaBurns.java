@@ -1,6 +1,5 @@
 package com.github.matkubiak.lavaburns;
 
-import com.github.matkubiak.lavaburns.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.InteractionHand;
@@ -9,12 +8,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
 @Mod(LavaBurns.MODID)
 public class LavaBurns {
@@ -23,6 +22,7 @@ public class LavaBurns {
 
     public LavaBurns() {
         MinecraftForge.EVENT_BUS.register(this); // Register ourselves for server and other game events we are interested in
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SPEC); // Register config
 
         adjacentStanding = new Vec3i[]{
                 new Vec3i(-1, 0, 0), new Vec3i(1, 0, 0), // LOWER LEFT and RIGHT
@@ -69,15 +69,13 @@ public class LavaBurns {
     }
 
     boolean isBurningBlocker(Block block) {
-        if (block == Blocks.AIR || block == Blocks.WATER)
-            return false;
-        return true;
+        return (block != Blocks.AIR);
         // return Block.isShapeFullBlock(block.getCollisionShape(null, null, null, null));
     }
 
     private void burnPlayer(Player player) {
         player.setSecondsOnFire(1);
-        if (player.isInWater())
+        if (player.isInWater() && !Config.getWaterProtection())
             player.hurt(player.level().damageSources().onFire(), 1);
     }
 
@@ -130,15 +128,12 @@ public class LavaBurns {
         }
 
         // HOLDING A BUCKET OF LAVA
+        if (!Config.getBucketBurns())
+            return;
+
         if (event.player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == Items.LAVA_BUCKET ||
                 event.player.getItemInHand(InteractionHand.OFF_HAND).getItem() == Items.LAVA_BUCKET) {
             burnPlayer(event.player);
         }
-    }
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
     }
 }

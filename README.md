@@ -25,3 +25,17 @@ This mod works best as one of many little tweak mods in adventure and challenge 
 Because it's so lightweight, fully vanilla and server-side, it likely won't cause any problems or compatibility issues with your other mods.
 
 It also double serves as a prank mod, just install it on your SMP without telling anyone and (literally) __watch the world burn__!
+
+
+## Configuration
+
+You can find the config file in `.minecraft/saves/<Your World>/lava_burns-server.toml`.
+
+Here is the default config:
+
+```toml
+# Whether holding a bucket of lava will burn the player
+bucketBurns = true
+# Whether being in water will protect the player from burning
+waterProtection = true
+```
