@@ -9,6 +9,14 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
+    private static ForgeConfigSpec.ConfigValue<Float>
+            BURN_RADIUS_SPEC =  BUILDER
+            .comment(" Burning Radius")
+            .define("burnRadius", 5.0f);
+    private static ForgeConfigSpec.ConfigValue<Integer>
+            BURN_DURATION_SPEC =  BUILDER
+            .comment(" For how many seconds to set the player on fire")
+            .define("burnDuration", 1);
     private static ForgeConfigSpec.BooleanValue
         BUCKET_BURNS = BUILDER
             .comment(" Whether holding a bucket of lava will burn the player")
@@ -17,29 +25,31 @@ public class Config {
             .comment(" Whether being in water will protect the player from burning")
             .define("waterProtection", false);
 
-    private static ForgeConfigSpec.ConfigValue<Integer>
-        BURN_DURATION_SPEC =  BUILDER
-            .comment(" For how many seconds to set the player on fire")
-            .define("burnDuration", 1);
-
-    private static boolean bucketBurns, waterProtection;
+    private static float burnRadius;
     private static int burnDuration;
+    private static boolean bucketBurns, waterProtection;
+
+    public static float getBurnRadius() {
+        return burnRadius;
+    }
+    public static int getBurnDuration() {
+        return burnDuration;
+    }
     public static boolean getBucketBurns() {
         return bucketBurns;
     }
     public static boolean getWaterProtection() {
         return waterProtection;
     }
-    public static int getBurnDuration() {
-        return burnDuration;
-    }
 
     public static ForgeConfigSpec SPEC = BUILDER.build();
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
+        burnRadius = BURN_RADIUS_SPEC.get();
+        burnDuration = BURN_DURATION_SPEC.get();
         bucketBurns = BUCKET_BURNS.get();
         waterProtection = WATER_PROTECTION_SPEC.get();
-        burnDuration = BURN_DURATION_SPEC.get();
+        LavaBurns.setupPositions();
     }
 }
